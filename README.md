@@ -4,9 +4,11 @@
 
 ## 📸 Telas do Aplicativo
 
-| Tela Principal (Lista) | Tela de Formulário |
-| :---: | :---: |
-|  |  |
+| **Tela Principal (Lista)**                                                 | **Tela de Formulário**                                                            | **Tela de Compartilhamento**                                               |
+| -------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| <img src="assets/images/home.png" width="200">                            | <img src="assets/images/lista.png" width="200">                                  | <img src="assets/images/compartilhar.png" width="200">                    |
+| *Visualize todas as plantas e locais salvos de forma rápida e organizada.* | *Adicione novas plantas, fotos e detalhes do local de forma simples e intuitiva.* | *Compartilhe seus pontos verdes com amigos ou com a comunidade RedeVerde.* |
+
 
 ## ✨ Funcionalidades Principais
 
