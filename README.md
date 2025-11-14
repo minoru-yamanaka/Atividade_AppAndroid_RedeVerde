@@ -17,6 +17,12 @@
   * **Endereço Manual:** Campos para inserir Título, Nota, Nome da Rua, Número e CEP.
   * **Compartilhamento Nativo:** Cada item da lista possui um botão para compartilhar os detalhes do local (título, nota, endereço) em outros aplicativos (ex: WhatsApp, redes sociais).
 
+## 📥 Download para Testes
+
+Você pode baixar o APK de testes (release) diretamente do repositório:
+
+  * **[Baixar APK (app-release.apk)](https://github.com/minoru-yamanaka/Atividade_AppAndroid_RedeVerde/blob/main/app-release.apk)**
+
 ## 🚀 Tecnologias Utilizadas
 
 O projeto foi construído inteiramente em Flutter e utiliza os seguintes pacotes principais:
@@ -36,9 +42,9 @@ O projeto foi construído inteiramente em Flutter e utiliza os seguintes pacotes
 ### 2\. Clonar e Instalar
 
 ```bash
-# 1. Clone o repositório (ou apenas tenha a pasta do projeto)
-# git clone https://github.com/seu-usuario/redeverde.git
-# cd redeverde
+# 1. Clone o repositório
+git clone https://github.com/minoru-yamanaka/Atividade_AppAndroid_RedeVerde.git
+cd Atividade_AppAndroid_RedeVerde
 
 # 2. Instale todas as dependências do projeto
 flutter pub get
