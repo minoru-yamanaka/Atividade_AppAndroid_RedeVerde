@@ -1,8 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:foto/providers/greate_places.dart';
 import 'package:foto/utils/app_routes.dart';
 import 'package:provider/provider.dart';
+import 'package:share_plus/share_plus.dart'; // <-- 1. IMPORTADO O PACOTE
 
 class PlacesListScreen extends StatelessWidget {
   // --- Cores Personalizadas ---
@@ -13,7 +13,7 @@ class PlacesListScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: _backgroundColor,
       appBar: AppBar(
-        title: const Text('Meus Lugares'),
+        title: const Text('🌿 RedeVerde - Meus Lugares'),
         backgroundColor: _backgroundColor,
         foregroundColor: Colors.white,
         elevation: 0,
@@ -33,8 +33,8 @@ class PlacesListScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
             child: Text(
-              'Bem-vindo ao Foto-Lugares!\nCapture e salve seus locais favoritos.',
-              textAlign: TextAlign.center,
+              'Bem-vindo ao RedeVerde!\n\nDescubra, capture e compartilhe seus lugares favoritos onde a natureza floresce.🌱\nConecte-se com jardineiros da sua comunidade e ajude a espalhar o cultivo colaborativo pelo mundo.',
+              textAlign: TextAlign.justify,
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18,
@@ -57,9 +57,9 @@ class PlacesListScreen extends StatelessWidget {
                   style: TextStyle(color: Colors.white70, fontSize: 16),
                 ),
               ),
-              builder: (context, greatePlaces, ch) => greatePlaces.itemsCount == 0
+              builder: (context, greatePlaces, ch) =>
+                  greatePlaces.itemsCount == 0
                   ? ch!
-                  // <-- AQUELE ListTileTheme FOI REMOVIDO DAQUI -->
                   : ListView.builder(
                       itemCount: greatePlaces.itemsCount,
                       itemBuilder: (context, i) {
@@ -67,7 +67,8 @@ class PlacesListScreen extends StatelessWidget {
 
                         // --- Lógica de Texto ---
                         final note = place.note ?? 'Sem nota';
-                        final rua = place.location?.nomeRua ?? 'Rua não informada';
+                        final rua =
+                            place.location?.nomeRua ?? 'Rua não informada';
                         final numero = place.location?.numero ?? 'S/N';
                         final cep = place.location?.cep ?? '';
 
@@ -78,8 +79,12 @@ class PlacesListScreen extends StatelessWidget {
 
                         String coordsText = 'Coordenadas não salvas';
                         if (place.location != null) {
-                          final lat = place.location!.latitude.toStringAsFixed(5);
-                          final lng = place.location!.longitude.toStringAsFixed(5);
+                          final lat = place.location!.latitude.toStringAsFixed(
+                            5,
+                          );
+                          final lng = place.location!.longitude.toStringAsFixed(
+                            5,
+                          );
                           coordsText = 'Lat: $lat, Lng: $lng';
                         }
 
@@ -90,8 +95,6 @@ class PlacesListScreen extends StatelessWidget {
                           leading: CircleAvatar(
                             backgroundImage: FileImage(place.image),
                           ),
-
-                          // --- AJUSTE: Estilo aplicado diretamente ---
                           title: Text(
                             place.title,
                             style: const TextStyle(
@@ -103,13 +106,28 @@ class PlacesListScreen extends StatelessWidget {
                           subtitle: Text(
                             subtitleText,
                             style: TextStyle(
-                              color: Colors.white.withOpacity(0.85), // Subtítulo branco
+                              color: Colors.white.withOpacity(
+                                0.85,
+                              ), // Subtítulo branco
                             ),
                           ),
-                          // --- FIM DO AJUSTE ---
-
+                          trailing: IconButton(
+                            icon: const Icon(Icons.share),
+                            color: Colors.white,
+                            // --- 2. LÓGICA DE COMPARTILHAR ATUALIZADA ---
+                            onPressed: () {
+                              // Monta o texto que será compartilhado
+                              final texto =
+                                  'Vou compartilhar meu achado da RedeVerde para você poder contribuir com nosso cultivo colaborativo! 🌱\nLugar: ${place.title}\nNota: ${place.note ?? 'Sem nota'}\nEndereço: $endereco\nSe quiser encontrar mais preciosas, entre em contato com o Garden da RedeVerde: +55 11 95947-3402';
+                              // Chama a função de compartilhar
+                              Share.share(texto);
+                            },
+                            // --- FIM DO AJUSTE ---
+                          ),
                           isThreeLine: true,
-                          onTap: () {},
+                          onTap: () {
+                            // Ação ao clicar no item (ex: ver detalhes)
+                          },
                         );
                       },
                     ),
